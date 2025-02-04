@@ -10,10 +10,16 @@ class Attachment(BaseModel):
     type: str
     photo: Optional[Photo] = None
 
+class Action(BaseModel):
+    type: str
+    member_id: Optional[int] = None
+
 class Message(BaseModel):
     peer_id: int
     conversation_message_id: int
+    text: str = ""
     attachments: Optional[List[Attachment]] = []
+    action: Optional[Action] = None
 
 class VKCallbackObject(BaseModel):
     message: Message
